@@ -62,11 +62,11 @@ void loop() {
     }
   } else {
     // Compute next based on grid
-    for (int i = 0; i < cols; i++) {
-      for (int j = 0; j < rows; j++) {
-        cal_lights.setLED(i, j, grid[i + j * cols]);
-      }
-    }
+ //   for (int i = 0; i < cols; i++) {
+   //   for (int j = 0; j < rows; j++) {
+        
+     // }
+   // }
 
     for (int i = 0; i < cols; i++) {
       for (int j = 0; j < rows; j++) {
@@ -101,11 +101,12 @@ void loop() {
     }
 
 
-    memcpy(grid,next,rows*cols);
-//    for (int i = 0; i < cols; i++) {
-//      for (int j = 0; j < rows; j++) {
-//        grid[i + j * cols] = next[i + j * cols];
-//      }
-//    }
+ //   memcpy(grid,next,rows*cols);
+    for (int i = 0; i < cols; i++) {
+      for (int j = 0; j < rows; j++) {
+        grid[i + j * cols] = next[i + j * cols];
+        cal_lights.setLED(i, j, grid[i + j * cols]);
+      }
+    }
   }
 }
