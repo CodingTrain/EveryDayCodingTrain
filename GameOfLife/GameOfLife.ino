@@ -57,17 +57,9 @@ void loop() {
     now = millis();
     interaction = true;
   } else if (interaction) {
-    if (millis() - now > 5000) {
-      interaction = false;
-    }
+      interaction = millis() - now < 5000;
   } else {
     // Compute next based on grid
- //   for (int i = 0; i < cols; i++) {
-   //   for (int j = 0; j < rows; j++) {
-        
-     // }
-   // }
-
     for (int i = 0; i < cols; i++) {
       for (int j = 0; j < rows; j++) {
         bool state = grid[i + j * cols];
@@ -87,8 +79,6 @@ void loop() {
           neighbors--;
         }
 
-
-
         if (!state && neighbors == 3) {
           next[i + j * cols] = true;
         } else if (state && (neighbors < 2 || neighbors > 3)) {
@@ -101,11 +91,11 @@ void loop() {
     }
 
 
- //   memcpy(grid,next,rows*cols);
+ // memcpy(grid,next,rows*cols);
     for (int i = 0; i < cols; i++) {
       for (int j = 0; j < rows; j++) {
-        grid[i + j * cols] = next[i + j * cols];
         cal_lights.setLED(i, j, grid[i + j * cols]);
+        grid[i + j * cols] = next[i + j * cols];
       }
     }
   }
