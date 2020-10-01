@@ -71,6 +71,9 @@ void loop() {
     for (int i = 0; i < endP; i++) {
       Particle *p = &particles[i];
       cal_lights.setLED((int) p->pre.x, (int) p->pre.y, false);
+    }
+    for (int i = 0; i < endP; i++) {
+      Particle *p = &particles[i];
       cal_lights.setLED((int) p->pos.x, (int) p->pos.y, true);
       p->pre.x = p->pos.x;
       p->pre.y = p->pos.y;
